@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{% static '/css/utilities.css' %}">
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static '/css/auth.css' %}">
+    <link rel="stylesheet" href="{% static '/css/alert.css' %}">
+
+    <!--internal styling-->
+    <style>
+        .contact-header {
+            width: 100%;
+            height: 100px;
+            background-color: #4db5a8;
+            position: relative;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="contact-header">
+        <div class="header-content-container">
+            <div class="logo">
+                <h1><a href={% url "blog-home" %}>Dev<span>Blog</span></a></h1>
+                <div class="smaller-circle"></div>
+                <div class="small-circle"></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href={% url "blog-home" %}>Home</a></li>
+                    <li><a href={% url "about" %}>About</a></li>
+                    <li><a href={% url "contact" %}>Contact</a></li>
+                    <li><a href={% url "login" %}>Login</a></li>
+                    <li><a href={% url "register" %}>Sign up</a></li>
+        </div>
+    </header>
+    <div class="auth-wrapper">
+        <div class="card">
+            <div class="welcome-info">
+                <div>
+                    <img src="{% static '/images/blogger3.jpg' %}" alt="image of a person">
+                </div>
+                <div>
+                    <p class="md-x pb-1">Join Us</p>
+                    <p class="lead-x">You can sign up below!</p>
+                </div>
+                {% if messages %}
+                    {% for message in messages %}
+                    <script>
+                        alert("{{message}}")
+                    </script>
+                    <!-- Alert Bar
+                    <div class="alert-bar">
+                        <span class="alert-text">{{message}}</span>
+                        <button class="close-btn">&times;</button>
+                    </div>-->
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <form action={% url "register" %} method="POST">
+                
+                {% csrf_token %}
+                <div>
+                    {{form.username}}
+                </div>
+                <div>
+                    {{form.email}}
+                </div>
+                <div>
+                    {{form.password1}}
+                </div>
+                <div>
+                    {{form.password2}}
+                </div>
+                <p class="text-right pt-1"><a href={% url "login" %}>Already have an account? Login</a></p>
+                <div>
+                    <input type="submit" value="Sign up" class="btn btn-secondary">
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+    <!-- Footer section -->
+    <footer>
+        <div class="container">
+            <div class="grid">
+                <div class="footer-logo">
+                    <h1>Dev<span>Blog</span></h1>
+                    <div class="smaller-circle"></div>
+                    <div class="small-circle"></div>
+                </div>
+                <div>
+                    <h1 class="quick-links">Quick Links</h1>
+                    <ul>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="../about.html">About</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Terms and conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="designer-info text-center">
+            <p class="lead">&copy; 2021 | Designed By Oluwakayode and AlekenTriumph</p>
+        </div>
+    </footer>
+</body>
+
+</html>

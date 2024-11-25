@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post</title>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/e1cab67604.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static '/css/utilities.css' %}">
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static '/css/single.css' %}">
+    <!--internal styling-->
+    <style>
+        .contact-header {
+            width: 100%;
+            height: 100px;
+            background-color: #4db5a8;
+            position: relative;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Scroll to top-->
+    <div class="scrollToTop" id="scroll"><i class="fas fa-arrow-up"></i></div>
+
+
+    <!-- Website Header -->
+    <header class="contact-header">
+        <div class="header-content-container">
+            <div class="logo">
+                <h1><a href={% url "blog-home" %}>Dev<span>Blog</span></a></h1>
+                <div class="smaller-circle"></div>
+                <div class="small-circle"></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href={% url "blog-home" %}>Home</a></li>
+                    <li><a href={% url "about" %}>About</a></li>
+                    <li><a href={% url "contact" %}>Contact</a></li>
+                    <li><a href={% url "login" %}>Login</a></li>
+                    <li><a href={% url "register" %}>Sign up</a></li>
+                </ul>
+            </nav>
+            <div class="bars" id="open-sidBar">
+                <i class="fas fa-bars md"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- sideBar -->
+    <aside id="sideBar">
+        <div class="close" id="close-sideBar">
+            <p>X</p>
+        </div>
+        <div class="logo">
+            <h1><a href={% url "blog-home" %}>Dev<span>Blog</span></a></h1>
+            <div class="smaller-circle"></div>
+            <!-- <div class="small-circle"></div> -->
+        </div>
+        <nav>
+            <ul>
+                <li><a href={% url "blog-home" %}>Home</a></li>
+                <li><a href={% url "about" %}>About</a></li>
+                <li><a href={% url "contact" %}>Contact us</a></li>
+                <li><a href={% url "login" %}>Login</a></li>
+                <li><a href={% url "register" %}>Sign up</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Website main contents-->
+    <main>
+        <article class="container">
+            <div class="article-header">
+                <h1 class="xl mt-4 pb-1">{{object.title}}</h1>
+               <p class="pb-2"><a href="#" class="text-primary text-underline">{{object.little_description}}</a><span> | {{object.time_posted|date:"j M, Y"}}</span></p>
+            </div>
+            <div class="article-image mb-2">
+                <img src={{object.post_image.url}} alt="">
+            </div>
+            <div class="article-content">
+                {{object.description}}
+            </div>
+        </article>
+
+        <!-- Related Contents -->
+        <section class="related-contents">
+            <div class="container">
+                <h1 class="text-center md mt-4 mb-3 text-bold">Related Contents</h1>
+                <div class="grid">
+                    
+                    {% for related_post in related_posts  %}
+                    <div>
+                        <div class="related-content-image">
+                            <img src={{related_post.post_image.url}} alt="UX Research">
+                        </div>
+                       <div class="p-2 related-categories">
+                            <h1 class="mb-1 text-bold"><a href="#">{{related_post.title}}</a></h1>
+                            <p class="related-categories-para"><a href="#">{{related_post.little_description}}</a></p>
+                            <p class="mt-1">{{related_post.description|truncatewords:30}}<a href="#" class="text-primary text-underline">Read More...</a> | 10 Min Read</p>
+                       </div>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+    <!-- Footer section -->
+    <footer>
+        <div class="container">
+            <div class="grid">
+                <div class="footer-logo">
+                    <h1>Dev<span>Blog</span></h1>
+                    <div class="smaller-circle"></div>
+                    <div class="small-circle"></div>
+                </div>
+                <div>
+                    <h1 class="quick-links">Quick Links</h1>
+                    <ul>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href={% url "about" %}>About</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Terms and conditions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h1 class="social">Social</h1>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="designer-info text-center">
+            <p class="lead">&copy; 2021 | Designed By Oluwakayode and AlekenTriumph</p>
+        </div>
+    </footer>
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <!-- end of JQuery -->
+    <!-- Slick Carousel -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{% static '/js/app.js' %}"></script>
+</body>
+
+</html>

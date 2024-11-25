@@ -1,0 +1,74 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+    <title>Dev Blog</title>
+{% endblock title %}
+
+{% block header %}
+<div class="container text-center">
+    <h2 class="xl pb-1">Here are all the post from you <br /> <span class="text-primary">{{request.user.profile.first_name}}</span></h2>
+    <div>
+        <a href={% url "about" %} class="btn btn-outline md mt-3">Check Our Services</a>
+    </div>
+</div>
+{% endblock header %}
+
+{% block nav1 %}
+<nav>
+    <ul>
+        <li><a href={% url "user-home" %}>Home</a></li>
+        <li><a href={% url "about" %}>About</a></li>
+        <li><a href={% url "contact" %}>Contact us</a></li>
+        <li><a style = "color:red" href={% url "logout" %}>Logout</a></li>
+    </ul>
+</nav>
+{% endblock nav1 %}
+
+
+{% block nav2 %}
+<nav>
+    <ul>
+        <li><a href={% url "user-home" %}>Home</a></li>
+        <li><a href={% url "about" %}>About</a></li>
+        <li><a href={% url "contact" %}>Contact us</a></li>
+        <li><a style = "color:red" href={% url "logout" %}>Logout</a></li>
+    </ul>
+</nav>
+{% endblock nav2 %}
+
+{% block main %}
+<main>
+    <!-- Recent posts section(3rd section)-->
+     <br />
+    <h1 style="text-align: center">Click Posts to Update</h1>
+    <section class="recent-posts">
+        <div class="container">
+            <div class="grid">
+                {% for post in posts %}
+                <div class="post">
+                   <div class="image-wrapper">
+                        <img src={{post.post_image.url}} alt="camera">
+                   </div>
+                    <div class="date">
+                        <p>{{ post.time_posted|date:"j M, Y"}}</p>
+                    </div>
+                    <p class="m-1 mobile-ux"><a href={% url "post-update" post.id %}>{{ post.title }}</a></p>
+                    <div class=" recentPost-info p-1">
+                        <h1 class="pb-1">{{ post.little_description }}</h1>
+                        <p>{{ post.description|truncatewords:30 }}<a href={% url "post-update" post.id %}>Read More...</a></p>
+                        <div class="profile-wrapper mt-4">
+                            <img src={{post.author.profile.image.url}} alt="profile-picture">
+                            <p class="pl-1">{{post.author}}</p>
+                        </div>
+                        <br />
+                        <div style="background:red; width:50px" ><p><a href={% url "post-delete" post.id %}>Delete</a></p></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock main %}
+

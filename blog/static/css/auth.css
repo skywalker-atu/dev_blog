@@ -1,0 +1,90 @@
+.auth-wrapper {
+  width: 100%;
+  min-height: 100%;
+}
+
+.auth-wrapper .card {
+  width: 50%;
+  margin: 4em auto;
+  padding: 2em;
+}
+.welcome-info {
+  display: flex;
+}
+.welcome-info > div:nth-child(1) {
+  width: 150px;
+  height: 150px;
+  border: 5px solid var(--primary-color);
+  border-radius: 50%;
+}
+.welcome-info > div:nth-child(1) img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: block;
+}
+
+.welcome-info > div:nth-child(2) {
+  align-self: center;
+  margin-left: 1em;
+}
+
+/* Registration form*/
+.auth-wrapper .card form > div {
+  width: 100%;
+  margin-top: 2em;
+  position: relative;
+}
+
+.auth-wrapper .card form > div label {
+  display: block;
+  position: absolute;
+  top: 50%;
+  pointer-events: none;
+  transition: 500ms ease-in-out;
+}
+.auth-wrapper .card form > div input {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #000;
+  padding: 10px;
+  font-size: 1.2em;
+}
+
+.auth-wrapper .card form > div input:focus ~ label,
+.auth-wrapper .card form > div input:valid ~ label {
+  top: -20%;
+  font-size: 13px;
+  color: var(--primary-color);
+}
+
+.auth-wrapper .card form > div input:focus {
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.auth-wrapper a {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.auth-wrapper .card form .btn {
+  cursor: pointer;
+  font-size: 1.8em;
+  border-radius: 0;
+}
+
+@media (max-width: 700px) {
+  .auth-wrapper .card {
+    width: 70%;
+    margin: 4em auto;
+    padding: 2em;
+  }
+}
+
+@media (max-width: 450px) {
+  .auth-wrapper .card {
+    width: 90%;
+    margin: 4em auto;
+    padding: 2em;
+  }
+}

@@ -1,0 +1,79 @@
+{% extends "contact.html" %}
+{% load static %}
+
+{% block title %}
+<title>Dev_Blog User</title>
+{% endblock title %}
+
+{% block header %}
+<header class="contact-header">
+    <div class="header-content-container">
+        <div class="logo">
+            <h1><a href={% url "blog-home" %}>Dev<span>Blog</span></a></h1>
+            <div class="smaller-circle"></div>
+            <div class="small-circle"></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href={% url "profile" %}>Profile</a></li>
+                <li><a href={% url "user_blog" %}>Blogs</a></li>
+                <li><a href={% url "contact" %}>Contact</a></li>
+                <li><a style = "color: red" href={% url "logout" %}>Logout</a></li>
+    </div>
+    <div class="contact-us">
+        <h2 class="text-bold">Welcome <span style="color: skyblue">{{ user.username }}</span></h2>
+    </div>
+</header>
+{% endblock header %}
+
+{% block main %}
+<main>
+    <div class="col-lg-8">
+        <div class="contact-wrap" >
+            <h3 class="mb-4 text-center">Be Creative</h3>
+            <div id="form-message-warning" class="mb-4 w-100 text-center"></div> 
+            <div id="form-message-success" class="mb-4 w-100 text-center">
+                Your message was sent, thank you!
+            </div>
+            <form method="POST" enctype="multipart/form-data" id="contactForm" name="contactForm" class="contactForm">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{form.title}}
+                        </div>
+                    </div>
+                    <div class="col-md-12"> 
+                        <div class="form-group">
+                            {{form.little_description}}
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{form.description}}
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{form.post_category}}
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{form.post_image}}
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="submit" value="Send Post" class="btn btn-primary">
+                            <div class="submitting"></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock main %}
+
+

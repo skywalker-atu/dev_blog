@@ -1,0 +1,29 @@
+/* Basic styles for the alert bar */
+.alert-bar {
+    background-color: #f44336;  /* Red background */
+    color: white;               /* White text */
+    padding: 20px;              /* Padding around the text */
+    font-size: 16px;            /* Text size */
+    display: flex;              /* Flexbox layout for content */
+    justify-content: space-between; /* Space between the message and close button */
+    align-items: center;        /* Vertically center the content */
+    position: fixed;            /* Fix the alert bar at the top */
+    top: 0;                     /* Align at the top of the screen */
+    left: 0;                    /* Align at the left of the screen */
+    width: 100%;                /* Full width */
+    z-index: 1000;              /* Ensure the alert is on top */
+}
+
+/* Styles for the close button */
+.close-btn {
+    background: none;           /* No background */
+    border: none;               /* No border */
+    color: white;               /* White text */
+    font-size: 30px;            /* Larger text for the button */
+    cursor: pointer;           /* Pointer cursor on hover */
+}
+
+/* Hover effect for close button */
+.close-btn:hover {
+    color: #ddd;                /* Lighten the close button color on hover */
+}

@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title>Contact Us</title>
+    {% endblock title %}
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/e1cab67604.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static '/css/utilities.css' %}">
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static '/css/contact.css' %}">
+    <link rel="stylesheet" href="{% static '/css/blogging_form.css' %}">
+
+    <!--internal styling-->
+    <style>
+
+        .contact-header {
+        width: 100%;
+        height: 500px;
+        background-color: #4db5a8;
+        position: relative;
+        padding: 10px 0;
+        } 
+    </style>
+</head>
+
+<body>
+    {% block header %}
+    <header class="contact-header">
+        <div class="header-content-container">
+            <div class="logo">
+                <h1><a href={% url "blog-home" %}>Dev<span>Blog</span></a></h1>
+                <div class="smaller-circle"></div>
+                <div class="small-circle"></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href={% url "blog-home" %}>Home</a></li>
+                    <li><a href={% url "about" %}>About</a></li>
+                    <li><a href={% url "contact" %}>Contact</a></li>
+                    <li><a href={% url "login" %}>Login</a></li>
+                    <li><a href={% url "register" %}>Sign up</a></li>
+        </div>
+        <div class="contact-us">
+            <h2 class="text-bold">Contact Us</h2>
+        </div>
+    </header>
+    {% endblock header %}
+    {% block main %}
+    <main>
+        <section class="contact-section">
+            <div class="container">
+                <div class="grid">
+                    <div class="contact-info">
+                        <p>
+                           Whether you want to learn about writing articles or you need an expert to write articles for you, let us help with your challenge.
+                        </p>
+                        <p class="mt-2 "> <i class="fas fa-phone text-primary pr-1"></i>+234-000-000-000</p>
+                        <p class="pt-1"> <i class="fas fa-envelope text-primary pr-1"></i>info@devblog.com</p>
+                    </div>
+                    <div class="contact-form">
+                        <div class="contact-wrapper card">
+                            <form action="./contact.html">
+                                <div>
+                                    <label for="name">Name<span>*</span></label>
+                                    <input type="text" name="name" id="name" placeholder="Your name">
+                                </div>
+                                <div>
+                                    <label for="email">Email<span>*</span></label>
+                                    <input type="email" name="email" id="email" placeholder="Your Email">
+                                </div>
+                                <div class="grid">
+                                    <div>
+                                        <label for="company">Company or Website<span>*</span></label>
+                                        <input type="text" name="company" id="company" placeholder="Company's name or website">
+                                    </div>
+                                    <div>
+                                        <label for="location">Location<span>*</span></label>
+                                        <input type="text" name="name" id="location" placeholder="Country or City">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="mobile">Phone Number<span>*</span></label>
+                                    <input type="tel" name="phone number" id="mobile" placeholder="Enter number">
+                                </div>
+                                <div>
+                                    <label for="help">How can we help?<span>*</span></label>
+                                    <select name="how can we help" id="help">
+                                        <option value="">Inquiry</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <div>
+                                        <label for="message">Message<span>*</span></label>
+                                        <textarea name="message" id="message" placeholder="Please leave a message"></textarea>
+                                    </div>
+                                    <div>
+                                        <input type="submit" value="Get in Touch" class="btn btn-secondary">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    {% endblock main %}
+    <!-- Footer section -->
+    <footer>
+        <div class="container">
+            <div class="grid">
+                <div class="footer-logo">
+                    <h1>Dev<span>Blog</span></h1>
+                    <div class="smaller-circle"></div>
+                    <div class="small-circle"></div>
+                </div>
+                <div>
+                    <h1 class="quick-links">Quick Links</h1>
+                    <ul>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href={% url "about" %}>About</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Terms and conditions</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="designer-info text-center">
+            <p class="lead">&copy; 2021 | Designed By Oluwakayode and AlekenTriumph</p>
+        </div>
+    </footer>
+</body>
+</html>

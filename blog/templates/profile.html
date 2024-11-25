@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <script src="{% static '/js/all.js' %}"></script>
+    <link rel="stylesheet" href="{% static '/css/utilities.css' %}">
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static '/css/contact.css' %}">
+    <link rel="stylesheet" href="{% static '/css/blogging_form.css' %}">
+
+    <!--internal styling-->
+    <style>
+        .contact-header {
+            width: 100%;
+            height:500px;
+            background-color: #4db5a8;
+            position: relative;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="contact-header">
+        <div class="header-content-container">
+            <div class="logo">
+                <h1><a href={% url "user-home" %}>Dev<span>Blog</span></a></h1>
+                <div class="smaller-circle"></div>
+                <div class="small-circle"></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href={% url "user-home" %}>Home</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a style="color:red" href={% url "logout" %}>Logout</a></li>
+        </div>
+        <div class="about-us">
+            <h2 class="text-bold">Profile Page</h2>
+        </div>
+    </header>
+
+    <main>
+        <section class="profile-section">
+            <div class="author-profile grid">
+                <div class="profile-img">
+                    <img src="{{ user.profile.image.url }}" alt="profile-img">
+                </div>
+                {% if user.profile.first_name %}
+                <div class="text-light pt-5">
+                    <h3 class="mb-1">Author</h3>
+                    <h1 class="md text-bold">{{ user.profile.last_name }} {{ user.profile.first_name }}</h1>
+                    <p class="lead bio">
+                        {{ user.profile.about_author }}
+                    </p>
+                </div>
+                {% else %}
+                <div class="text-light pt-5">
+                    <h3 class="mb-1">Author</h3>
+                    <h1 class="md text-bold">No Full Name</h1>
+                    <p class="lead bio">
+                        No one Knows anything about this user.
+                    </p>
+                </div>
+                {% endif %}
+            </div>
+        </section>
+
+        <!--Updating Section-->
+        <section>
+            <div class="col-lg-8">
+                <div class="contact-wrap" >
+                    <h3 class="mb-4 text-center">Update Profile</h3>
+                    <div id="form-message-warning" class="mb-4 w-100 text-center"></div> 
+                    <div id="form-message-success" class="mb-4 w-100 text-center">
+                        Profile Updated!
+                    </div>
+                    <form action={% url "profile" %} method="POST" enctype="multipart/form-data" id="contactForm" name="contactForm" class="contactForm">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {{u_form.username}}
+                                </div>
+                            </div>
+                            <div class="col-md-12"> 
+                                <div class="form-group">
+                                    {{u_form.email}}
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {{p_form.first_name}}
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {{p_form.last_name}}
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {{p_form.about_author}}
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                {{p_form.image }}
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="submit" value="Update" class="btn btn-primary">
+                                    <div class="submitting"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        
+        </section>
+
+    <!-- Footer section -->
+    <footer>
+        <div class="container">
+            <div class="grid">
+                <div class="footer-logo">
+                    <h1>Dev<span>Blog</span></h1>
+                    <div class="smaller-circle"></div>
+                    <div class="small-circle"></div>
+                </div>
+                <div>
+                    <h1 class="quick-links">Quick Links</h1>
+                    <ul>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href={% url "about" %}>About</a></li>
+                        <li><a href="#">Team</a></li>
+                        <li><a href="#">Terms and conditions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h1 class="social">Social</h1>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="designer-info text-center">
+            <p class="lead">&copy; 2021 | Designed By Oluwakayode and AlekenTriumph</p>
+        </div>
+    </footer>
+</body>
+
+</html>

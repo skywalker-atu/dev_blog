@@ -1,0 +1,309 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title>Dev Blog</title>
+    {% endblock title %}
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/e1cab67604.js" crossorigin="anonymous"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static '/css/utilities.css' %}">
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+    
+    <style>
+        .fun{
+            /* border: 2px solid red; */
+            padding: 2em 4rem;
+        }
+        .fun h1{
+            font-size: 2rem;
+            font-family: ralewayBold;
+            background-image: url("{% static '/images/what-is-ux-research-400x250.png.webp' %}");
+            background-clip: text;
+            color: transparent;
+            background-position: center;
+            position: relative;
+        }
+        .fun h1::after {
+            content: 'hfffh';
+            border-bottom: 4px solid green;
+            position: absolute;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 500ms ease-in;
+        }
+        .fun h1:hover::after{
+             transform: scaleX(1);
+            transform-origin: right;
+        }
+        .fun button {
+            border: 0;
+            padding: 0.5rem 1.5rem;
+            font-size: 1em;
+            background-color: tomato;
+            position: relative;
+            z-index: 1;
+            color: #fff;
+        }
+        .fun button::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transform: scaleX(0);
+            transition: transform 300ms ease-in;
+            /* transform-origin: top right; */
+        }
+        .fun button:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll to top-->
+    <div class="scrollToTop" id="scroll"><i class="fas fa-arrow-up"></i></div>
+
+    <!-- Website Header -->
+    <header>
+        <div class="header-content-container">
+           <div class="logo">
+                <h1><a href={% url "blog-home" %}>Dev<span>Blog</span></a></h1>
+                <div class="smaller-circle"></div>
+                <div class="small-circle"></div>
+           </div>
+           {% block nav1 %}
+           <nav>
+               <ul>
+                   <li><a href={% url "user-home" %}>Home</a></li>
+                   <li><a href={% url "about" %}>About</a></li>
+                   <li><a href={% url "contact" %}>Contact us</a></li>
+                   <li><a href={% url "login" %}>Login</a></li>
+                   <li><a href={% url "register" %}>Sign up</a></li>
+               </ul>
+           </nav>
+           {% endblock nav1 %}
+            <div class="bars" id="open-sidBar">
+                <i class="fas fa-bars md"></i>
+            </div>
+        </div>
+        {% block header %}
+        <div class="container text-center">
+            <h2 class="xl pb-1">We are here to give <span class="text-primary">you quality contents</span></h2>
+            <p class="md">We dedicate a reliable team of bloggers to you to create contents and articles that stands out in the society</p>
+            <div>
+                <a href={% url "about" %} class="btn btn-outline md mt-3">Check Our Services</a>
+            </div>
+        </div>
+        {% endblock header %}
+    </header>
+    
+
+    <!-- sideBar -->
+    <aside id="sideBar">
+        <div class="close" id="close-sideBar"><p>X</p></div>
+        <div class="logo">
+            <h1><a href="">Dev<span>Blog</span></a></h1>
+            <div class="smaller-circle"></div>
+            <!-- <div class="small-circle"></div> -->
+        </div>
+        {% block nav2 %}
+        <nav>
+            <ul>
+                <li><a href={% url "blog-home" %}>Home</a></li>
+                <li><a href={% url "about" %}>About</a></li>
+                <li><a href={% url "contact" %}>Contact us</a></li>
+                <li><a href={% url "login" %}>Login</a></li>
+                <li><a href={% url "register" %}>Sign up</a></li>
+            </ul>
+        </nav>
+        {% endblock nav2 %}
+    </aside>
+    <!-- Website main contents-->
+    {% block main %}
+    <main>
+        <!-- Most viewed post section -->
+        <section class="post-of-the-day">
+            <div class="container grid">
+                <div class="poster grid">
+                    <div class="skewed-image">
+                        <img src="{% static '/images/nice-view.jpg' %}" alt="river">
+                    </div>
+                    <div class="Featured-article">
+                        <h4>Featured Article</h4>
+                        <h1 class="md"><a href="#">New Year, New Beginnings: Smashing Workshops and Audits</a></h1>
+                        <div class="flex">
+                            <img src="{% static '/images/blogger3.jpg' %}" alt="river">
+                            <p class="author">By <a href="#">Jane Doe</a></p>
+                            <p class="duration"><i class="fas fa-calendar"></i>10 mins read</p>
+                            <p class="comments"><i class="fab fa-envira"></i>0 comment(s)</p>
+                        </div>
+                        <div class="article-info">
+                            <p class="lead">
+                                <span class="text-primary">January 15, 2021 — </span>Catch up on what’s been cookin’ at Smashing and explore some of the most popular community resources
+                                featured in our newsletter over the past few weeks. Spoiler: there are also new workshops, ...
+                            </p>
+                            <div>
+                                <a href="#" class="btn btn-outline mt-1 text-primary">Read More >>></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-side-grid">
+                    <div class="card">
+                        <form action={% url "search" %} method='GET'>
+                            <div class="search-bar">
+                                <input type="text" name="query" id="search" class="search-bar__input" aria-label="search" placeholder="Make a search..." value="{{query}}">
+                                <button class="search-bar__btn"><i class="fas fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% if query %}
+    <h2>Results for "{{ query }}":</h2>
+        <!-- Recent posts section(3rd section)-->
+         {% if results %}
+        <section class="recent-posts">
+            <div class="container">
+                <div class="grid">
+                    {% for post in results %}
+                    <div class="post">
+                       <div class="image-wrapper">
+                            <img src={{post.post_image.url}} alt="camera">
+                       </div>
+                        <div class="date">
+                            <p>{{ post.time_posted|date:"j M, Y"}}</p>
+                        </div>
+                        <p class="m-1 mobile-ux"><a href={% url "post-detail" post.id %}>{{ post.title }}</a></p>
+                        <div class=" recentPost-info p-1">
+                            <h1 class="pb-1">{{ post.little_description }}</h1>
+                            <p>{{ post.description|truncatewords:30 }}<a href={% url "post-detail" post.id %}>Read More...</a></p>
+                            <div class="profile-wrapper mt-4">
+                                <img src={{post.author.profile.image.url}} alt="profile-picture">
+                                <p class="pl-1">{{post.author}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}        
+                    {% if is_paginated %}
+                        {% if page_obj.has_previous %}
+                            <a class="btn btn-info mb-4" href="?page=1">First</a>
+                            <a class="btn btn-info mb-4" href="?page={{page_obj.previous_page_number}}">Previous</a>
+                        {% endif %}
+                        {% for num in page_obj.paginator.page_range  %}
+                            {% if page_obj.number == num %}
+                                <a class="btn btn-info mb-4" href="?page={{num}}">{{num}}</a>
+                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                <a class="btn btn-info mb-4" href="?page={{num}}">{{num}}</a>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <a class="btn btn-info mb-4" href="?page={{page_obj.next_page_number}}">Next</a>
+                            <a class="btn btn-info mb-4" href="?page={{page_obj.paginator.num_pages}}">Last</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
+    {% endif %}
+
+        <!-- Recent posts section(3rd section)-->
+        <section class="recent-posts">
+            <div class="container">
+                <div class="grid">
+                    {% for post in posts %}
+                    <div class="post">
+                       <div class="image-wrapper">
+                            <img src={{post.post_image.url}} alt="camera">
+                       </div>
+                        <div class="date">
+                            <p>{{ post.time_posted|date:"j M, Y"}}</p>
+                        </div>
+                        <p class="m-1 mobile-ux"><a href={% url "post-detail" post.id %}>{{ post.title }}</a></p>
+                        <div class=" recentPost-info p-1">
+                            <h1 class="pb-1">{{ post.little_description }}</h1>
+                            <p><a href={% url "post-detail" post.id %}>{{ post.description }}</a></p>
+                            <div class="profile-wrapper mt-4">
+                                <img src={{post.author.profile.image.url}} alt="profile-picture">
+                                <p class="pl-1">{{post.author}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}        
+                    {% if is_paginated %}
+                        {% if page_obj.has_previous %}
+                            <a class="btn btn-info mb-4" href="?page=1">First</a>
+                            <a class="btn btn-info mb-4" href="?page={{page_obj.previous_page_number}}">Previous</a>
+                        {% endif %}
+                        {% for num in page_obj.paginator.page_range  %}
+                            {% if page_obj.number == num %}
+                                <a class="btn btn-info mb-4" href="?page={{num}}">{{num}}</a>
+                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                <a class="btn btn-info mb-4" href="?page={{num}}">{{num}}</a>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <a class="btn btn-info mb-4" href="?page={{page_obj.next_page_number}}">Next</a>
+                            <a class="btn btn-info mb-4" href="?page={{page_obj.paginator.num_pages}}">Last</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </main>
+    {% endblock main %}
+    <div class="fun">
+        <h1>Linear Gradient</h1>
+        <button>transforms</button>
+    </div>
+    <!-- Footer section -->
+    <footer>
+        <div class="container">
+            <div class="grid">
+                <div class="footer-logo">
+                    <h1>Dev<span>Blog</span></h1>
+                    <div class="smaller-circle"></div>
+                    <div class="small-circle"></div>
+                </div>
+                <div>
+                   <h1 class="quick-links">Quick Links</h1>
+                   <ul>
+                       <li><a href="#">Events</a></li>
+                       <li><a href="#">Services</a></li>
+                       <li><a href="./about.html">About</a></li>
+                       <li><a href="#">Team</a></li>
+                       <li><a href="#">Terms and conditions</a></li>
+                   </ul>
+                </div>
+            </div>
+        </div>
+        <div class="designer-info text-center">
+            <p class="lead">&copy; 2021 | Designed By Oluwakayode and AlekenTriumph</p>
+        </div>
+    </footer>
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+        crossorigin="anonymous"></script>
+    <!-- end of JQuery -->
+    <!-- Slick Carousel -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static '/js/app.js' %}"></script>
+</body>
+</html>

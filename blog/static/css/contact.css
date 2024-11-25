@@ -1,0 +1,169 @@
+.contact-us,
+.about-us {
+  width: 50%;
+  padding: 10px;
+  margin: 15em 0 0 5em;
+}
+.contact-us h2,
+.about-us h2 {
+  font-size: 3.5em;
+  color: #fff;
+  text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.contact-section {
+  width: 100%;
+}
+
+/* Contact-info */
+.contact-info {
+  align-self: start;
+  margin-top: 3em;
+}
+.contact-info p {
+  max-width: 40ch;
+  font-size: 1.3em;
+  line-height: 1.5;
+  word-spacing: 3px;
+}
+
+.contact-section .contact-form {
+  position: relative;
+  top: -10%;
+}
+.contact-section .contact-form .card > form div {
+  margin-bottom: 2em;
+  width: 100%;
+}
+
+.contact-section .contact-form .card > form div label {
+  display: block;
+  margin-bottom: 10px;
+}
+.contact-section .contact-form .card > form div label span {
+  color: #ff0000;
+  font-size: 1.8em;
+}
+
+.contact-section .contact-form .card > form div input,
+.contact-section .contact-form .card > form div select,
+.contact-section .contact-form .card > form div textarea {
+  width: 100%;
+  font-size: 1.3em;
+  padding: 10px;
+}
+
+.contact-section .contact-form .card .grid > div {
+  margin-bottom: 0;
+}
+
+.contact-section .contact-form .card > form div textarea {
+  height: 200px;
+  resize: none;
+}
+
+.contact-section .contact-form .card > form div input::placeholder,
+.contact-section .contact-form .card > form div select::placeholder,
+.contact-section .contact-form .card > form div textarea::placeholder {
+  text-transform: capitalize;
+  font-size: 0.7em;
+}
+
+.btn {
+  border-radius: 0;
+  background-color: #2d5a68;
+}
+
+/* Media Queries for contacts */
+@media (max-width: 852px) {
+  .contact-section .container .grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-section .contact-form {
+    position: static;
+  }
+}
+
+@media (max-width: 651px) {
+  .contact-us,
+  .about-us {
+    margin-left: 2em;
+  }
+  .contact-us h2,
+  .about-us h2 {
+    font-size: 2.7em;
+  }
+}
+
+@media (max-width: 240px) {
+  .contact-us,
+  .about-us {
+    margin-left: 1em;
+  }
+  .contact-us h2,
+  .about-us h2 {
+    font-size: 2em;
+  }
+}
+
+/* Profile Page */
+.author-profile {
+  width: 100%;
+  /* height: 300px; */
+  background-color: var(--primary-color);
+  padding: 1rem;
+  position: relative;
+}
+
+.author-profile.grid {
+  grid-template-columns: 1fr 2fr 1fr;
+  text-shadow: 3px 3px 4px rgba(20, 20, 20, 0.56);
+}
+.author-profile.grid .author-contact ul li {
+  padding: 0.5em;
+}
+
+.author-profile.grid .profile-img {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.author-profile.grid .profile-img img {
+  border: 5px solid rgb(241, 234, 234);
+  border-radius: 10px;
+  width: 150px;
+  height: 160px;
+  transform: rotate(-20deg);
+  box-shadow: 0px 15px 5px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  transition: all 500ms ease-in-out;
+}
+
+.author-profile.grid .profile-img img:hover {
+  transform: rotate(0deg);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+.bio {
+  line-height: 2.5;
+}
+.vertical {
+  width: 3px;
+  height: 100px;
+  background-color: #000;
+  position: absolute;
+  top: 80%;
+  left: 15%;
+}
+.vertical-articles {
+  transform: rotate(90deg);
+  position: absolute;
+  top: 100%;
+  left: 14%;
+  font-size: 1.2rem;
+}
+
+/* author-articles */
+.author-articles {
+  background-color: #fff;
+}
