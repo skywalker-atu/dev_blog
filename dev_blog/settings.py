@@ -137,10 +137,3 @@ LOGOUT_REDIRECT_URL = 'login'
 #For Unauthenticated users
 LOGIN_URL = 'login'
 
-#Email Section
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # For production
-EMAIL_HOST = 'smtp.gmail.com'  # Use Gmail's SMTP server
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'unimtriumph29@gmail.com'
-EMAIL_HOST_PASSWORD = 'dark32Crypt@^aP0r'
